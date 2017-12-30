@@ -24,18 +24,18 @@ export class HomePage {
           text: 'Destructive',
           role: 'destructive',
           handler: () => {
-            alert("Destructive");
+            console.log("Destructive");
           }
         },{
           text: 'Archive',
           handler: () => {
-            alert("Archive");
+            console.log("Archive");
           }
         },{
           text: 'Cancel',
           role: 'cancel',
           handler: () => {
-            alert("Cancel");
+            console.log("Cancel");
           }
         }
       ]
@@ -51,6 +51,56 @@ export class HomePage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  mostrarPromptAlert(){
+    let prompt = this.alertCtrl.create({
+      title: 'Email',
+      message: 'Insira seu Email',
+      inputs: [
+        {
+          name: 'titulo',
+          placeholder: "Digite seu email"
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: data => {
+            console.log("Cancelar Clicado");
+          }
+        },{
+          text: "Salvar",
+          handler: data => {
+            console.log("Email " + data.titulo + " Salvo");
+          }
+        }
+      ]
+    });
+
+    prompt.present();
+  }
+
+  mostrarConfirmAlert(){
+    let confirm = this.alertCtrl.create({
+      title: 'Usar Sabre de Luz?',
+      message: 'Deseja ativar o sabre de luz?',
+      buttons: [
+        {
+          text: 'Não',
+          handler: () => {
+            console.log('Good Bye');
+          }
+        },{
+          text: 'Sim',
+          handler: () => {
+            console.log('Tenha cuidado Jovem Padawan');
+          }
+        }
+      ]
+    });
+
+    confirm.present();
   }
 
 }
